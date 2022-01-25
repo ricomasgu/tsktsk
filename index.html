@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>TSKMGR - Main Page</title>
+        <link rel="stylesheet" href="./style-tskmgr.css">
+    </head>
+    <body>
+        <!-- NAV -->
+        <nav>
+
+        </nav>
+
+        <!-- HEADER -->
+        <header>
+            <nav>
+                <ul>
+                    <li><button id="projects-button">Projects</button></li>
+                    <li><button id="services-button">Services</button></li>
+                    <li><button id="resources-button">Resources</button></li>
+                    <li><button id="templates-button">Templates</button></li>
+                </ul>
+            </nav>
+        </header>        
+        
+        <!-- SECTION PROJECTS -->
+        <section id="projects">
+
+            <!-- SECTION PROJECTS - PROJECTS -->
+            <section id="project-details">
+                <table id="projects-table">
+                    <thead>
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Details</th>
+                            <th>Resources</th>
+                            <th>Progress</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="clickable-row" id="project1">
+                            <td>Project1</td>
+                            <td>The first test project</td>
+                            <td>RC 100%</td>
+                            <td>5%</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr class="clickable-row" id="project2">
+                            <td>Project2</td>
+                            <td>The second test project</td>
+                            <td>RC 80%</td>
+                            <td>0%</td>
+                            <td>Not Started</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- SECTION PROJECTS - PROJECT - TASKS -->
+            <section id="project1-tasks" hidden>
+                <table id="tasks-table">
+                    <thead>
+                        <tr>
+                            <th>Task Name</th>
+                            <th>Details</th>
+                            <th>Duration</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Progress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="clickable-row" id="project1-task1">
+                            <td>Task1 Project1</td>
+                            <td>The first test task</td>
+                            <td>2h compress in two days</td>
+                            <td>High</td>
+                            <td>Not Started</td>
+                            <td>0%</td>
+                        </tr>
+                        <tr class="clickable-row" id="project1-task2">
+                            <td>Task2 Project1</td>
+                            <td>The second test task</td>
+                            <td>10h compress in one week</td>
+                            <td>Medium</td>
+                            <td>Started</td>
+                            <td>55%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="project2-tasks" hidden>
+                <table id="tasks-table">
+                    <thead>
+                        <tr>
+                            <th>Task Name</th>
+                            <th>Details</th>
+                            <th>Duration</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Progress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="clickable-row" id="project1-task1">
+                            <td>Task1 Project2</td>
+                            <td>The first test task</td>
+                            <td>2h compress in two days</td>
+                            <td>High</td>
+                            <td>Not Started</td>
+                            <td>0%</td>
+                        </tr>
+                        <tr class="clickable-row" id="project1-task2">
+                            <td>Task2 Project2</td>
+                            <td>The second test task</td>
+                            <td>10h compress in one week</td>
+                            <td>Medium</td>
+                            <td>Started</td>
+                            <td>55%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- SECTION PROJECTS - PROJECT - TASK - TODOS -->
+            <section id="project1-task1-todos" hidden>
+                <table id="todos-table">
+                    <thead>
+                        <tr>
+                            <th>ToDo Name</th>
+                            <th>Details</th>
+                            <th>Duration</th>
+                            <th>Status</th>
+                            <th>Progress</th>
+                            <th>Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ToDo1 Task1 Project1</td>
+                            <td>The first test todo</td>
+                            <td>1.5h compress in one day</td>
+                            <td>In Progress</td>
+                            <td>10%</td>
+                            <td>90%</td>
+                        </tr>
+                        <tr>
+                            <td>ToDo2 Task1 Project1</td>
+                            <td>The second test todo</td>
+                            <td>0.5h compress in one day</td>
+                            <td>Not Started</td>
+                            <td>0%</td>
+                            <td>10%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="project1-task2-todos" hidden>
+                <table id="todos-table">
+                    <thead>
+                        <tr>
+                            <th>ToDo Name</th>
+                            <th>Details</th>
+                            <th>Duration</th>
+                            <th>Status</th>
+                            <th>Progress</th>
+                            <th>Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ToDo1 Task2 Project1</td>
+                            <td>The first test todo</td>
+                            <td>1.5h compress in one day</td>
+                            <td>In Progress</td>
+                            <td>10%</td>
+                            <td>90%</td>
+                        </tr>
+                        <tr>
+                            <td>ToDo2 Task2 Project1</td>
+                            <td>The second test todo</td>
+                            <td>0.5h compress in one day</td>
+                            <td>Not Started</td>
+                            <td>0%</td>
+                            <td>10%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </section>
+        
+        <!-- SECTION SERVICES -->
+        <section id="services" hidden>
+
+        </section>
+        
+        <!-- SECTION RESOURCES -->
+        <section id="resources" hidden>
+
+        </section>
+        
+        <!-- SECTION TEMPLATES -->
+        <section id="templates" hidden>
+            <!-- SECTION TEMPLATES - NAV -->
+            <nav>
+                <ul>
+                    <li>Projects</li>
+                    <li>Tasks</li>
+                </ul>
+            </nav>
+
+            <!-- SECTION TEMPLATES - PROJECTS -->
+            <section id="templates-projects">
+
+            </section>
+
+            <!-- SECTION TEMPLATES - TASKS -->
+            <section id="templates-tasks">
+
+            </section>
+        </section>
+        
+        <!-- FOOTER -->
+        <footer>
+
+        </footer>
+
+        <script type="text/javascript" src="tskmgr.js"></script>
+
+    </body>
+</html>
