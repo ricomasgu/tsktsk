@@ -37,3 +37,4 @@ document.getElementById("templates-button")
             document.getElementById("resources").hidden = true;  
             document.getElementById("templates").hidden = false;
 }, false);
+

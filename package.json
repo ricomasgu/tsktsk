@@ -1,0 +1,34 @@
+{
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watchAll --verbose=false"
+  },
+  "dependencies": {
+    "jest": "^27.4.7",
+    "jest-html-reporter": "^3.4.2",
+    "jest-junit": "^13.0.0"
+  },
+  "jest": {
+    "reporters": [
+      "default",
+      [
+        "./node_modules/jest-html-reporter",
+        {
+          "pageTitle": "Lab Solution",
+          "outputPath": "lab-solution.html",
+          "includeFailureMsg": true,
+          "includeConsoleLog": true
+        }
+      ]
+    ]
+  },
+  "jest-junit": {
+    "suiteNameTemplate": "{filepath}",
+    "classNameTemplate": "{classname}",
+    "titleTemplate": "{title}"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "none"
+  }
+}
