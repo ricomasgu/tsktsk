@@ -18,10 +18,11 @@ class Timer {
         this.id = 0;
     }
 
-    reset(){
+    reset(callback){
         this.hours = 0;
         this.minutes = 0;
         this.seconds = 0;
+        callback();
     }
 
     showTimer(){
