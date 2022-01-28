@@ -19,6 +19,9 @@ class Timer {
     }
 
     reset(callback){
+        if(this.id !== 0){
+            this.stop();
+        }
         this.hours = 0;
         this.minutes = 0;
         this.seconds = 0;

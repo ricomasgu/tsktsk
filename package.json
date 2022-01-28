@@ -4,6 +4,8 @@
     "test:watch": "jest --watchAll --verbose=false"
   },
   "dependencies": {
+    "express": "^4.17.2",
+    "hbs": "^4.2.0",
     "jest": "^27.4.7",
     "jest-html-reporter": "^3.4.2",
     "jest-junit": "^13.0.0"
