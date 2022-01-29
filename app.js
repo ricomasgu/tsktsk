@@ -1,6 +1,9 @@
 // Require Express
 const express = require('express');
 
+// Require hbs
+const hbs = require('hbs');
+
 // Express server handling requests and responses
 const app = express();
 
@@ -12,6 +15,33 @@ app.set("views", __dirname + "/views");
 
 //tell our Express app that HBS will be in charge of rendering the HTML
 app.set("view engine", "hbs");
+
+//to register the partials directory
+hbs.registerPartials(__dirname + "views/partials");
+
+// send views/index.hbs for displaying in the browser
+app.get("/", (req, res, next) => res.render("index"));
+
+// send views/projects.hbs for displaying in the browser
+app.get("/projects", (req, res, next) => res.render("projects"));
+
+// send views/projects.hbs for displaying in the browser
+app.get("/resources", (req, res, next) => res.render("resources"));
+
+// send views/projects.hbs for displaying in the browser
+app.get("/services", (req, res, next) => res.render("services"));
+
+// send views/projects.hbs for displaying in the browser
+app.get("/tasks", (req, res, next) => res.render("tasks"));
+
+// send views/projects.hbs for displaying in the browser
+app.get("/templates", (req, res, next) => res.render("templates"));
+
+// send views/projects.hbs for displaying in the browser
+app.get("/tests", (req, res, next) => res.render("tests"));
+
+// send views/index.hbs for displaying in the browser
+app.get("/", (req, res, next) => res.render("index"));
 
 // send views/index.hbs for displaying in the browser
 app.get("/", (req, res, next) => res.render("index"));
