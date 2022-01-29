@@ -1,4 +1,4 @@
-const Timer = require('./../src/timer');
+const Timer = require('./../public/src/classes/timer');
 
 let timer;
 
@@ -62,7 +62,7 @@ describe('Timer', () => {
       });
   
       it('should reinitialize the values of the properties', () => {
-        timer.reset();
+        timer.reset(() => {});
         expect(timer.hours === 0).toBe(true);
         expect(timer.minutes === 0).toBe(true);
         expect(timer.seconds === 0).toBe(true);
