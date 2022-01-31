@@ -1,6 +1,25 @@
-class Task {
-    constructor () {
+const SubTask = require("./subtask");
 
+class Task  extends SubTask {
+    constructor (name) {
+        super(name);
+        this.subTasks = [];
+    }
+
+    createSubTask(name){
+        this.subTasks.push(new SubTask(name));
+    }
+
+    deleteSubTask(id){
+        this.subTasks.splice(id,1);
+    }
+
+    showSubTasks(){
+        return this.subTasks;
+    }
+
+    showTask(){
+        return this;
     }
 }
 

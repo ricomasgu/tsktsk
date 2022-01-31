@@ -1,10 +1,11 @@
-const Task = require('./../src/task');
+const Task = require('./../public/src/classes/task');
 
 let task;
+const name = "First task";
 
 describe('Task', () => {
     beforeEach(() => {
-        task = new Task(value);
+        task = new Task(name);
     });
 
     it('should be declared', () => {
@@ -14,27 +15,13 @@ describe('Task', () => {
     describe('constructor method', () => {
         it('should receive AT LEAST `name` as a parameter and store the value in its own `name` property', () => {
             expect(Task.constructor.length).toBe(1);
-            expect(task.name).toBe(true);
-            expect(task.description).toBe(true);
-            expect(task.time).toBe(true);
-            expect(task.startDate).toBe(true);
-            expect(task.endDate).toBe(true);
-            expect(task.startPlannedDate).toBe(true);
-            expect(task.endPlannedDate).toBe(true);
-            expect(task.status).toBe(true);
-            expect(task.assignedResources).toBe(true);
-            expect(task.priority).toBe(true);
-            expect(task.notes).toBe(true);
-            expect(task.chat).toBe(true);
-            expect(task.files).toBe(true);
-            expect(task.issues).toBe(true);
-            expect(task.meetings).toBe(true);
+            expect(task.subTasks instanceof Array);
         });
     });
 
     describe('createSubTask method', () => {
         beforeEach(() => {
-          task = new Task();
+          task = new Task(name);
         });
     
         it('should be declared', () => {
@@ -42,13 +29,15 @@ describe('Task', () => {
         });
     
         it('should return the value of the task', () => {
-            expect(task.createSubTask() === task.value).toBe(true);
+          const before = task.subTasks.length;
+          task.createSubTask(name);
+          expect(before + 1 === task.subTasks.length).toBe(true);
         });
     });
 
     describe('deleteSubTask method', () => {
         beforeEach(() => {
-          task = new Task();
+          task = new Task(name);
         });
     
         it('should be declared', () => {
@@ -56,13 +45,18 @@ describe('Task', () => {
         });
     
         it('should return the value of the task', () => {
-            expect(task.deleteSubTask() === task.value).toBe(true);
+          const id = 1;
+          task.createSubTask(name);
+          task.createSubTask(name);
+          const before = task.subTasks.length;
+          task.deleteSubTask(id);
+          expect(before - 1 === task.subTasks.length).toBe(true);
         });
     });
 
-    describe('showTask method', () => {
+    describe('showTasks method', () => {
         beforeEach(() => {
-          task = new Task(value);
+          task = new Task(name);
         });
     
         it('should be declared', () => {
@@ -70,7 +64,7 @@ describe('Task', () => {
         });
     
         it('should return the value of the task', () => {
-            expect(task.showTask() === task.value).toBe(true);
+            expect(task.showTask() instanceof Task).toBe(true);
         });
     });
 });
