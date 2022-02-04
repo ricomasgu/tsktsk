@@ -1,5 +1,3 @@
-const SubTask = require("./subtask");
-
 class Task  extends SubTask {
     constructor (name) {
         super(name);

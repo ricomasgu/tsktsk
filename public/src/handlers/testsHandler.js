@@ -29,13 +29,15 @@ let task;
 document.getElementById("create")
         .addEventListener("click",() => {
             const inputs = document.getElementsByTagName("input");
+            const tasks = document.getElementById("tasks");
             const [name, description, status, priority] = [...inputs];
-            task = new Task(name, description, status, priority);
+            task = new Task(name.value, description.value, status.value, priority.value);
             //Next step, create a HTML object that contains the info and insert into the HTML.
-            //<tr>
-            //    <td>name</td>
-            //    <td>description</td>
-            //    <td>status</td>
-            //    <td>priority</td>
-            //</tr>
+            const trObject = `<tr>
+                <td>${name.value}</td>
+                <td>${description.value}</td>
+                <td>${status.value}</td>
+                <td>${priority.value}</td>
+            </tr>`;
+            tasks.innerHTML = trObject;
 }, false);

@@ -14,23 +14,26 @@
         <input type="text" name="description">
         <input type="text" name="status">
         <input type="text" name="priority">
-        <input type="button" value="Create">
+        <input type="button" value="Create" id="create">
     </div>
     <div>
-        <thead>
-            <tr>
-                <th>Task Name</th>
-                <th>Details</th>
-                <th>Duration</th>
-                <th>Priority</th>
-                <th>Status</th>
-                <th>Progress</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
+        <table>
+            <thead>
+                <tr>
+                    <th>Task Name</th>
+                    <th>Details</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                </tr>
+            </thead>
+            <tbody id="tasks">
+            </tbody>
+        </table>       
     </div>
 </section>
 
 <!-- SCRIPTS -->
+<script type="text/javascript" src="src/classes/subtask.js"></script>
+<script type="text/javascript" src="src/classes/task.js"></script>
+<script type="text/javascript" src="src/classes/timer.js"></script>
 <script type="text/javascript" src="src/handlers/testsHandler.js"></script>
