@@ -1,27 +1,29 @@
-const SubTask = require("./subtask");
-
-class Task  extends SubTask {
-    constructor (name) {
-        super(name);
-        this.subTasks = [];
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+ 
+const taskSchema = new Schema(
+  {
+    name: { 
+        type: String
+    },
+    description: { 
+        type: String
+    },
+    status: { 
+        type: String,
+        enum: ["Not Started", "In progress", "Finished"]
+    },
+    priority: { 
+        type: String,
+        enum: ["High", "Medim", "Low"]
+    },
+    subtask: { 
+        type: [ObjectId]
     }
-
-    createSubTask(name){
-        this.subTasks.push(new SubTask(name));
-    }
-
-    deleteSubTask(id){
-        this.subTasks.splice(id,1);
-    }
-
-    showSubTasks(){
-        return this.subTasks;
-    }
-
-    showTask(){
-        return this;
-    }
-}
-
-// The following is required for automated testing. Please, ignore it.
-if (typeof module !== 'undefined') module.exports = Task;
+  },
+  { timestamps: true }
+);
+ 
+const Task = mongoose.model('Task', taskSchema);
+ 
+module.exports = Task;

@@ -1,26 +1,29 @@
-class SubTask {
-    constructor (name) {
-        this.name = name;
-        this.description;
-        this.time;
-        this.startDate;
-        this.endDate;
-        this.startPlannedDate;
-        this.endPlannedDate;
-        this.status;
-        this.assignedResources;
-        this.priority;
-        this.notes;
-        this.files;
-        this.issues;
-        this.meetings;
-        this.chat;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+ 
+const subtaskSchema = new Schema(
+  {
+    name: { 
+        type: String
+    },
+    description: { 
+        type: String
+    },
+    status: { 
+        type: String,
+        enum: ["Not Started", "In progress", "Finished"]
+    },
+    priority: { 
+        type: String,
+        enum: ["High", "Medim", "Low"]
+    },
+    subtask: { 
+        type: [ObjectId]
     }
-
-    showSubTask(){
-        return this;
-    }
-}
-
-// The following is required for automated testing. Please, ignore it.
-if (typeof module !== 'undefined') module.exports = SubTask;
+  },
+  { timestamps: true }
+);
+ 
+const SubTask = mongoose.model('SubTask', subtaskSchema);
+ 
+module.exports = SubTask;

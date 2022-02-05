@@ -4,6 +4,14 @@ const express = require('express');
 // Require hbs
 const hbs = require('hbs');
 
+// Require mongoose
+const mongoose = require('mongoose');
+
+// Connection to the Database
+mongoose.connect('mongodb://localhost/tsktsk')
+        .then(res => console.log(`Connected to ${res.connections[0].name}`))
+        .catch(err => console.log(err));
+
 // Express server handling requests and responses
 const app = express();
 
@@ -17,7 +25,7 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "hbs");
 
 //to register the partials directory
-hbs.registerPartials(__dirname + "views/partials");
+hbs.registerPartials(__dirname + "/views/partials");
 
 // send views/index.hbs for displaying in the browser
 app.get("/", (req, res, next) => res.render("index"));

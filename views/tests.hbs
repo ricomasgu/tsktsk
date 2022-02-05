@@ -1,20 +1,25 @@
 <!-- SECTION TESTS -->
 <section>
     <div>
-        <button id="timer">0:0:0</button>
         <button id="start">Start</button>
         <button id="stop">Stop</button>
         <button id="reset">Reset</button>
+        <form action="/tests" method="post"></form>
+            <input id="timer" name="timer" value="0:0:0">
+            <input type="button" value="Save">
+        </form>
     </div>
 </section>
 
 <section>
     <div>
-        <input type="text" name="name">
-        <input type="text" name="description">
-        <input type="text" name="status">
-        <input type="text" name="priority">
-        <input type="button" value="Create" id="create">
+        <form action="/tests" method="post">
+            <input type="text" name="name" placeholder="name">
+            <input type="text" name="description" placeholder="description">
+            <input type="text" name="status" placeholder="status">
+            <input type="text" name="priority" placeholder="priority">
+            <input type="button" value="Create" id="create">
+        </form>
     </div>
     <div>
         <table>
