@@ -32,7 +32,11 @@ document.getElementById("create")
             const tasks = document.getElementById("tasks");
             const [name, description, status, priority] = [...inputs];
             task = new Task(name.value, description.value, status.value, priority.value);
-            //Next step, create a HTML object that contains the info and insert into the HTML.
+
+            //Next step, save the element in the Database
+            
+
+            //Next step, create a HTML object that contains the info and insert into the HTML
             const trObject = `<tr>
                 <td>${name.value}</td>
                 <td>${description.value}</td>
