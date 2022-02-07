@@ -9,7 +9,8 @@
     "jest": "^27.4.7",
     "jest-html-reporter": "^3.4.2",
     "jest-junit": "^13.0.0",
-    "mongoose": "^6.2.0"
+    "mongoose": "^6.2.0",
+    "path": "^0.12.7"
   },
   "jest": {
     "reporters": [

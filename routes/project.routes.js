@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-// GET route to retrieve and display all the books
-router.get('/projects', (req, res) => res.render('projects/projects-list.hbs'));
+// send views/projects.hbs for displaying in the browser
+app.get("/projects", (req, res, next) => res.render("projects"));
 
 module.exports = router;

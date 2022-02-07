@@ -16,9 +16,6 @@ const subtaskSchema = new Schema(
     priority: { 
         type: String,
         enum: ["High", "Medim", "Low"]
-    },
-    subtask: { 
-        type: [ObjectId]
     }
   },
   { timestamps: true }

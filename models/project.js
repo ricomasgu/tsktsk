@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
  
-const taskSchema = new Schema(
+const projectSchema = new Schema(
   {
     name: { 
         type: String
@@ -17,13 +17,13 @@ const taskSchema = new Schema(
         type: String,
         enum: ["High", "Medim", "Low"]
     },
-    subtasks: { 
+    tasks: { 
         type: [ObjectId]
     }
   },
   { timestamps: true }
 );
  
-const Task = mongoose.model('Task', taskSchema);
+const Project = mongoose.model('Project', projectSchema);
  
-module.exports = Task;
+module.exports = Project;
