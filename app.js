@@ -21,6 +21,6 @@ const index = require('./routes/index.routes');
 app.use('/', index);
 
 const tests = require('./routes/tests.routes');
-app.use('/tests', tests);
+app.use('/', tests);
 
 module.exports = app;

@@ -18,7 +18,7 @@
             <input type="text" name="description" placeholder="description">
             <input type="text" name="status" placeholder="status">
             <input type="text" name="priority" placeholder="priority">
-            <input type="button" value="Create" id="create">
+            <input type="submit" value="Create" id="create">
         </form>
     </div>
     <div>
@@ -32,6 +32,14 @@
                 </tr>
             </thead>
             <tbody id="tasks">
+                <tr>
+                    {{#each this}}
+                        <td>{{name}}</td>
+                        <td>{{description}}</td>
+                        <td>{{status}}</td>
+                        <td>{{priority}}</td>
+                    {{/each}}
+                </tr>
             </tbody>
         </table>       
     </div>
