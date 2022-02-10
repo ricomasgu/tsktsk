@@ -1,6 +1,11 @@
 // We reuse this import in order to have access to the `body` property in requests
 const express = require("express");
 
+const bodyParser = require('body-parser');
+
+// Require hbs
+const hbs = require('hbs');
+
 // ℹ️ global package used to `normalize` paths amongst different operating systems
 // https://www.npmjs.com/package/path
 const path = require("path");
@@ -15,4 +20,9 @@ module.exports = (app) => {
 
     //tell our Express app that HBS will be in charge of rendering the HTML
     app.set("view engine", "hbs");
+
+    app.use(bodyParser.urlencoded({ extended: true }));
+
+    //to register the partials directory
+    hbs.registerPartials(__dirname + "/views/partials");
 };

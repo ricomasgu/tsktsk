@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
  
-const taskSchema = new Schema(
+const projectSchema = new Schema(
   {
     name: { 
         type: String
@@ -11,16 +11,19 @@ const taskSchema = new Schema(
     },
     status: { 
         type: String,
-        enum: ["Not Started", "In progress", "Finished"]
+        enum: ["not-started", "in-progress", "finished"]
     },
     priority: { 
         type: String,
-        enum: ["High", "Medim", "Low"]
+        enum: ["high", "medium", "low"]
+    },
+    tasks: { 
+        type: [ObjectId]
     }
   },
   { timestamps: true }
 );
  
-const Task = mongoose.model('Task', taskSchema);
+const Project = mongoose.model('Project', projectSchema);
  
-module.exports = Task;
+module.exports = Project;
