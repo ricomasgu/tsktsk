@@ -6,11 +6,9 @@ const taskSchema = new Schema(
     name: { 
         type: String,
         required: true
-        
     },
     description: { 
-        type: String,
-        default: "-"
+        type: String
     },
     status: { 
         type: String,
@@ -21,6 +19,22 @@ const taskSchema = new Schema(
         type: String,
         enum: ["high", "medium", "low"],
         default: "medium"
+    },
+    project: {
+      type: Schema.Types.ObjectId,
+      ref: 'Project' 
+    },
+    subtasks: { 
+      type: [{ type: Schema.Types.ObjectId, ref: 'Subtask' }]
+    },
+    resources: { 
+        type: [{ type: Schema.Types.ObjectId, ref: 'Resources' }]
+    },
+    timers: { 
+      type: [{
+        resource: { type: Schema.Types.ObjectId, ref: 'Subtask' },
+        timer: { type: Schema.Types.ObjectId, ref: 'Timer' }
+      }]
     }
   },
   { timestamps: true }

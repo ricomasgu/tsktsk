@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const projectSchema = new Schema(
   {
     name: { 
-        type: String
+        type: String,
+        required: true
     },
     description: { 
         type: String
@@ -18,7 +19,10 @@ const projectSchema = new Schema(
         enum: ["high", "medium", "low"]
     },
     tasks: { 
-        type: [ObjectId]
+        type: [{ type: Schema.Types.ObjectId, ref: 'Task' }]
+    },
+    resources: { 
+        type: [{ type: Schema.Types.ObjectId, ref: 'Resources' }]
     }
   },
   { timestamps: true }
