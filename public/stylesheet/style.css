@@ -1,0 +1,26 @@
+body {
+    margin 0;
+    padding: 0;
+}
+
+nav {
+    background-color: antiquewhite;
+}
+
+.ul-nav {
+    display: flex;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.ul-nav > li {
+    padding: 0.5em 1em;
+    margin: 0 0.5em;
+    border: 1px solid black;
+    border-radius: 1em;
+    box-sizing: border-box;
+}
+
+.ul-nav > li > a {
+    text-decoration: none;
+}
