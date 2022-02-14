@@ -1,6 +1,11 @@
 <!-- SECTION PROJECTS -->
 <section id="projects">
 
+    <form action="/projects/create" method="post">
+        <input type="text" placeholder="Add new project" name="name">
+        <input type="submit" value="Add">
+    </form>
+
     <!-- SECTION PROJECTS - PROJECTS -->
     <section id="project-details">
         <table id="projects-table">
@@ -8,26 +13,32 @@
                 <tr>
                     <th>Project Name</th>
                     <th>Details</th>
-                    <th>Resources</th>
-                    <th>Progress</th>
                     <th>Status</th>
+                    <th>Resources</th>
+                    <th>Tasks</th>
                 </tr>
             </thead>
             <tbody>
+                {{#each projects}}
+                {{#with this}}
                 <tr class="clickable-row" id="project1">
-                    <td>Project1</td>
-                    <td>The first test project</td>
-                    <td>RC 100%</td>
-                    <td>5%</td>
-                    <td>In Progress</td>
+                    <td>{{name}}</td>
+                    <td>{{details}}</td>
+                    <td>{{status}}</td>
+                    <td>
+                        {{#each resources}}
+                        {{#with this}}
+                        <ul>
+                            <li>{{name}}</li>
+                            <li>{{time}}</li>
+                        </ul>
+                        {{/with}}
+                        {{/each}}
+                    </td>
+                    <td>{{tasks.length}}</td>
                 </tr>
-                <tr class="clickable-row" id="project2">
-                    <td>Project2</td>
-                    <td>The second test project</td>
-                    <td>RC 80%</td>
-                    <td>0%</td>
-                    <td>Not Started</td>
-                </tr>
+                {{/with}}
+                {{/each}}
             </tbody>
         </table>
     </section>

@@ -14,6 +14,9 @@ require('./config')(app);
 const index = require('./routes/index.routes');
 app.use('/', index);
 
+const projects = require('./routes/project.routes');
+app.use('/', projects);
+
 const tests = require('./routes/tests.routes');
 app.use('/', tests);
 
