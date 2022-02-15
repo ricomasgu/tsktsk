@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Project = require('../models/Project.model');
 
 // send views/projects.hbs for displaying in the browser
 router.get("/projects", (req, res, next) => {
@@ -22,6 +23,17 @@ router.post("/projects/create", (req, res, next) => {
             .catch(err => {
                 console.log("Some error occurred when creating a project", err);
                 res.redirect("/projects");
+            });
+});
+
+router.get("/projects/:id/edit", (req, res, next) => {
+    Project.findBtId(req.params.id)
+            .then(resFromDB => {
+                console.log("You retrieved the project successfully", resFromDB);
+                res.render("projects/project-details", { project: resFromDB });
+            })
+            .catch(err => {
+                console.log("Some error occurred when retrieving the project", err);
             });
 });
 

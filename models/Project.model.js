@@ -12,17 +12,25 @@ const projectSchema = new Schema(
     },
     status: { 
         type: String,
-        enum: ["not-started", "in-progress", "finished"]
+        enum: ["not-started", "in-progress", "finished"],
+        default: "not-started"
     },
     priority: { 
         type: String,
-        enum: ["high", "medium", "low"]
+        enum: ["high", "medium", "low"],
+        default: "medium"
     },
     tasks: { 
         type: [{ type: Schema.Types.ObjectId, ref: 'Task' }]
     },
     resources: { 
-        type: [{ type: Schema.Types.ObjectId, ref: 'Resources' }]
+        type: [{
+            resource: { type: Schema.Types.ObjectId, ref: 'Resources' },
+            time: Number
+        }]
+    },
+    time: {
+        type: Number
     }
   },
   { timestamps: true }

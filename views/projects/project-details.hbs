@@ -1,0 +1,15 @@
+{{#with project}}
+<h2>{{name}}</h2>
+<h3>{{status}} | {{priority}} | {{time}}</h3>
+<p>{{description}}</p>
+<ul>
+    {{#each tasks}}
+        <li>{{this.name}}</li>
+    {{/each}}
+</ul>
+<ul>
+    {{#each resources}}
+        <li>{{this.name}}</li>
+    {{/each}}
+</ul>
+{{/with}}
