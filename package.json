@@ -4,6 +4,7 @@
     "test:watch": "jest --watchAll --verbose=false"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.2",
     "hbs": "^4.2.0",
     "jest": "^27.4.7",

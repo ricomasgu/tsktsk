@@ -20,4 +20,7 @@ app.use('/', projects);
 const tests = require('./routes/tests.routes');
 app.use('/', tests);
 
+const auth = require('./routes/auth.routes');
+app.use('/', auth);
+
 module.exports = app;
