@@ -3,4 +3,7 @@
     <input type="text" placeholder="Username" name="username">
     <input type="password" placeholder="password" name="password">
     <input type="submit" value="Submit">
+    {{#if errorMessage}}
+        <p>{{errorMessage}}</p>
+    {{/if}}    
 </form>
