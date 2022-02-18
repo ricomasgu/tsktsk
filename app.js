@@ -1,3 +1,5 @@
+require('dotenv/config');
+
 // Require Express
 const express = require('express');
 
@@ -9,6 +11,8 @@ const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
 require('./config')(app);
+
+require('./config/session.config')(app);
 
 // 👇 Start handling routes here
 const index = require('./routes/index.routes');

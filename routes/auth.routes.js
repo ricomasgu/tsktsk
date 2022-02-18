@@ -4,16 +4,18 @@ const router = require("express").Router();
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 
+const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard");
+
 // send views/auth/signup.hbs for displaying in the browser
-router.get('/signup', (req, res, next) => {
+router.get('/signup', isLoggedOut, (_, res, next) => {
     console.log("You're on signup");
     res.render('auth/signup');
 });
 
-router.post('/signup', async (req, res, next) => {
-    const { username , password } = req.body;
-    if ( !username || !password || username === '' || password === '') {
-        res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide your username and password.' });
+router.post('/signup', isLoggedOut, async (req, res, next) => {
+    const { email , password } = req.body;
+    if ( !email || !password || email === '' || password === '') {
+        res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
         return;
     }
     const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
@@ -26,15 +28,16 @@ router.post('/signup', async (req, res, next) => {
     const salt = bcrypt.genSaltSync(10);
     hash = bcrypt.hashSync(password, salt);   
     try {
-        const resDB = await User.create({ username , password: hash });
+        const resDB = await User.create({ email , password: hash });
         console.log(resDB);
+        req.session.currentUser = resDB;
         res.redirect('/userProfile');
     } catch (err) {
         if (error instanceof mongoose.Error.ValidationError) {
             res.status(500).render('auth/signup', { errorMessage: error.message });
         } else if (error.code === 11000) {
             res.status(500).render('auth/signup', {
-               errorMessage: 'Username need to be unique. Username is already used.'
+               errorMessage: 'email need to be unique. email is already used.'
             });
         } else {
             next(error);
@@ -44,24 +47,25 @@ router.post('/signup', async (req, res, next) => {
     }
 });
 
-router.get('/signin', (req, res, next) => {
+router.get('/signin', isLoggedOut, (_, res, next) => {
     console.log("You're on signin");
     res.render('auth/login');
 });
 
-router.post("/signin", async (req, res, next) => {
-    const { username , password } = req.body;
-    if ( !username || !password || username === '' || password === '' ) {
-        res.render('auth/login', { errorMessage: 'All fields are mandatory. Please provide your username and password.' });
+router.post("/signin", isLoggedOut, async (req, res, next) => {
+    const { email , password } = req.body;
+    if ( !email || !password || email === '' || password === '' ) {
+        res.render('auth/login', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
         return;
     }
     try {
-        const resDB = await User.findOne({ username });
+        const resDB = await User.findOne({ email });
         if (!resDB) {
             res.render('auth/login', { errorMessage: 'Email is not registered. Try with other email.' });
             return;
         } else if(bcrypt.compareSync(password, resDB.password)) {
-            res.redirect("/userProfile", resDB);
+            req.session.currentUser = resDB;
+            res.redirect("/userProfile");
         } else {
             res.render('auth/login', { errorMessage: 'Incorrect password.' });
         }
@@ -71,9 +75,16 @@ router.post("/signin", async (req, res, next) => {
     }
 });
 
-router.get('/userProfile', (req, res) => {
+router.get('/userProfile', isLoggedIn, (_, res) => {
     console.log("You're on the user profile");
     res.render('users/user-profile');
 });
+
+router.post('/logout', isLoggedIn, (req, res, next) => {
+    req.session.destroy(err => {
+      if (err) next(err);
+      res.redirect('/');
+    });
+  });
 
 module.exports = router;

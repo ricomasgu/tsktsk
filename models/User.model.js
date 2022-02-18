@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const userSchema = new Schema({
-  username: {
+  email: {
     type: String,
     required: [true, 'Email is required.'],
     // this match will disqualify all the emails with accidental empty spaces, missing dots in front of (.)com and the ones with no domain at all
