@@ -1,12 +1,14 @@
 const router = require('express').Router();
+const { isLoggedIn } = require('../middleware/route-guard');
 const Task = require('../models/Task.model');
 
 // send views/tests.hbs for displaying in the browser
-router.get('/tests', (req, res, next) => {
+router.get('/tests', isLoggedIn, (req, res, next) => {
     console.log("At least you're on tests");
+    const user = req.session.currentUser;
     Task.find()
         .then((tasks) => {
-            res.render('tests', tasks);
+            res.render('tests/tests', { user, tasks });
         })
         .catch(err => console.log(err));
 });

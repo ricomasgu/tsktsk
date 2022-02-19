@@ -7,10 +7,10 @@
     </form>
 
     <!-- SECTION PROJECTS - PROJECTS -->
-    <section id="project-details">
+    <section id="project-section">
         <table id="projects-table">
-            <thead>
-                <tr>
+            <thead >
+                <tr class="row">
                     <th>Project Name</th>
                     <th>Details</th>
                     <th>Status</th>
@@ -21,7 +21,7 @@
             <tbody>
                 {{#each projects}}
                 {{#with this}}
-                <tr class="clickable-row" id="project1">
+                <tr class="clickable-row row" id="project1">
                     <td><a href="/projects/{{_id}}/edit">{{name}}</a></td>
                     <td>{{details}}</td>
                     <td>{{status}}</td>

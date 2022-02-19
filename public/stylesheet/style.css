@@ -10,17 +10,22 @@ body {
 header {
     background-color: #ffa252;
     padding: 0.1em;
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
+    align-items:center;
 }
 
 .ul-nav {
     display: flex;
     list-style: none;
     box-sizing: border-box;
+    padding: 0 1em;
 }
 
 .ul-nav > li {
@@ -36,12 +41,94 @@ nav {
     color: black;
 }
 
-main {
-    box-sizing: content-box;
-    padding: 20px 1em;
+.logout > li {
+    padding: 0;
+    border: none;
 }
 
-h1 {
+#logout-btn {
+    padding: 0.5rem 1rem;
+}
+
+main {
+    box-sizing: content-box;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.box {
+    background-color: #ffa252;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    box-shadow: 5px 5px #eed872;
+}
+
+.box-big {
+    padding: 2rem;
+}
+
+h3 {
+    border: 1px solid #ffbe7c;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+input {
+    width: 100%;
+    margin: 1%;
+    border-radius: 0.5em;
+    border: 1px solid #ffbe7c;
+    padding: 1em;
+    box-sizing: border-box;
+    background-color: #eed872;
+    font-family: inherit;
+}
+
+input:hover,
+.ul-nav > li:hover {
+    background-color: #ffbe7c;
+    font-style: italic;
+}
+
+form > a {
+    text-decoration: none;
+    color: black;
+    margin-top: 0.5rem;
+    box-sizing: border-box;
+}
+
+form > a:hover {
+    color: white;
+}
+
+section,
+table {
+    width: 100%;
+}
+
+table {
+    border: 1px solid #eed872;
+    border-radius: 0.5rem;
+    margin: 0.5rem;
+}
+
+tr {
+    justify-content: space-around;
 }
 
 footer {
@@ -49,6 +136,6 @@ footer {
     width: 100%;
     bottom: 0;
     background-color: #eed872;
-    padding: 1em;
+    padding: 0.5rem 1rem;
     margin: 0;
 }

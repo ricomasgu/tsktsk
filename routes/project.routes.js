@@ -1,19 +1,21 @@
 const router = require('express').Router();
+const { isLoggedIn } = require('../middleware/route-guard');
 const Project = require('../models/Project.model');
 
 // send views/projects.hbs for displaying in the browser
-router.get("/projects", (req, res, next) => {
+router.get("/projects", isLoggedIn, (req, res, next) => {
+    const user = req.session.currentUser;
     Project.find()
             .then(resFromDB => {
                 console.log("You retrieved the projects successfully", resFromDB);
-                res.render("projects/projects", { projects: resFromDB });
+                res.render("projects/projects", { user, projects: resFromDB });
             })
             .catch(err => {
                 console.log("Some error occurred when retrieving the projects", err);
             });
 });
 
-router.post("/projects/create", (req, res, next) => {
+router.post("/projects/create", isLoggedIn, (req, res, next) => {
     const { name } = req.body;
     Project.create({ name })
             .then(resFromDB => {
@@ -26,11 +28,12 @@ router.post("/projects/create", (req, res, next) => {
             });
 });
 
-router.get("/projects/:id/edit", (req, res, next) => {
+router.get("/projects/:id/edit", isLoggedIn, (req, res, next) => {
+    const user = req.session.currentUser;
     Project.findBtId(req.params.id)
             .then(resFromDB => {
                 console.log("You retrieved the project successfully", resFromDB);
-                res.render("projects/project-details", { project: resFromDB });
+                res.render("projects/project-details", { user, project: resFromDB });
             })
             .catch(err => {
                 console.log("Some error occurred when retrieving the project", err);

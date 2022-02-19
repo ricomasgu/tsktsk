@@ -1,11 +1,13 @@
 {
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watchAll --verbose=false"
+    "test:watch": "jest --watchAll --verbose=false",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "express-session": "^1.17.2",
@@ -14,6 +16,7 @@
     "jest-html-reporter": "^3.4.2",
     "jest-junit": "^13.0.0",
     "mongoose": "^6.2.0",
+    "nodemon": "^2.0.15",
     "path": "^0.12.7"
   },
   "jest": {

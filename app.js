@@ -18,8 +18,23 @@ require('./config/session.config')(app);
 const index = require('./routes/index.routes');
 app.use('/', index);
 
+const pricing = require('./routes/pricing.routes');
+app.use('/', pricing);
+
 const projects = require('./routes/project.routes');
 app.use('/', projects);
+
+const resources = require('./routes/resource.routes');
+app.use('/', resources);
+
+const services = require('./routes/service.routes');
+app.use('/', services);
+
+const tasks = require('./routes/task.routes');
+app.use('/', tasks);
+
+const templates = require('./routes/template.routes');
+app.use('/', templates);
 
 const tests = require('./routes/tests.routes');
 app.use('/', tests);

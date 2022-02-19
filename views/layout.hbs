@@ -13,17 +13,32 @@
     <header>
         <!-- NAV -->
         <nav>
-            <ul class="ul-nav">
-                <li><a id="projects-a" href="/projects">Projects</a></li>
-                <li><a id="services-a" href="/services">Services</a></li>
-                <li><a id="resources-a" href="/resources">Resources</a></li>
-                <li><a id="templates-a" href="/templates">Templates</a></li>
-                <li><a id="templates-a" href="/tests">Tests</a></li>
-            </ul>
-            <ul class="ul-nav">
-                <li><a id="signin-a" href="/signin">Sign in</a></li>
-                <li><a id="signup-a" href="/signup">Sign up</a></li>
-            </ul>
+            {{#if user}}
+                <ul class="ul-nav">
+                    <li><a id="projects-a" href="/projects">Projects</a></li>
+                    <li><a id="services-a" href="/services">Services</a></li>
+                    <li><a id="resources-a" href="/resources">Resources</a></li>
+                    <li><a id="templates-a" href="/templates">Templates</a></li>
+                    <li><a id="templates-a" href="/tests">Tests</a></li>
+                </ul>
+                <ul class="ul-nav logout">
+                    <li>
+                        <form action="/logout" method="post">
+                            <input id="logout-btn" type="submit" value="Logout">
+                        </form>
+                    </li>
+                </ul>
+            {{else}}
+                <ul class="ul-nav">
+                    <li><a id="home-a" href="/">Home</a></li>
+                    <li><a id="pricing-a" href="/pricing">Pricing</a></li>
+                </ul>
+                <ul class="ul-nav">
+                    <li><a id="signin-a" href="/signin">Sign in</a></li>
+                    <li><a id="signup-a" href="/signup">Sign up</a></li>
+                </ul>                
+            {{/if}}
+            
         </nav>
     </header> 
 

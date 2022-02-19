@@ -1,7 +1,7 @@
 // We reuse this import in order to have access to the `body` property in requests
 const express = require("express");
 
-const bodyParser = require('body-parser');
+const cookieParser = require("cookie-parser");
 
 // Require hbs
 const hbs = require('hbs');
@@ -21,8 +21,10 @@ module.exports = (app) => {
     //tell our Express app that HBS will be in charge of rendering the HTML
     app.set("view engine", "hbs");
 
-    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+    app.use(cookieParser());
 
     //to register the partials directory
-    hbs.registerPartials(__dirname + "/views/partials");
+    hbs.registerPartials(path.join(__dirname, "..", "views", "partials"));
 };

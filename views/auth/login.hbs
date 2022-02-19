@@ -1,10 +1,13 @@
-<h3>Sign In:</h3>
-<form action="/signin" method="post">
-    <input type="email" placeholder="Email" name="email">
-    <input type="password" placeholder="password" name="password">
-    <input type="submit" value="Submit">
-    <a href="/signup">Sign up</a>
-    {{#if errorMessage}}
-        <p>{{errorMessage}}</p>
-    {{/if}}
-</form>
+<div class="col box box-big">
+    <h3 class="box">Sign In:</h3>
+    <form class="col" action="/signin" method="post">
+        <input type="email" placeholder="Email" name="email">
+        <input type="password" placeholder="Password" name="password">
+        <input type="submit" value="Submit">
+        <a href="/signup">Need to create an account?</a>
+        {{#if errorMessage}}
+            <p>{{errorMessage}}</p>
+        {{/if}}
+    </form>
+</div>
+

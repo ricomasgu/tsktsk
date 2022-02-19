@@ -14,7 +14,7 @@ router.get('/signup', isLoggedOut, (_, res, next) => {
 
 router.post('/signup', isLoggedOut, async (req, res, next) => {
     const { email , password } = req.body;
-    if ( !email || !password || email === '' || password === '') {
+    if ( !email || !password || !email.length || !password.length ) {
         res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
         return;
     }
@@ -64,6 +64,7 @@ router.post("/signin", isLoggedOut, async (req, res, next) => {
             res.render('auth/login', { errorMessage: 'Email is not registered. Try with other email.' });
             return;
         } else if(bcrypt.compareSync(password, resDB.password)) {
+            console.log(resDB);
             req.session.currentUser = resDB;
             res.redirect("/userProfile");
         } else {
@@ -75,16 +76,17 @@ router.post("/signin", isLoggedOut, async (req, res, next) => {
     }
 });
 
-router.get('/userProfile', isLoggedIn, (_, res) => {
-    console.log("You're on the user profile");
-    res.render('users/user-profile');
+router.get('/userProfile', isLoggedIn, (req, res, next) => {
+    const user = req.session.currentUser;
+    console.log("User Profile:", user);
+    res.render('users/user-profile', { user });
 });
 
 router.post('/logout', isLoggedIn, (req, res, next) => {
     req.session.destroy(err => {
-      if (err) next(err);
-      res.redirect('/');
+        if (err) next(err);
+        res.redirect('/');
     });
-  });
+});
 
 module.exports = router;
