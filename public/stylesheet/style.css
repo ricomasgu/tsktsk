@@ -116,8 +116,7 @@ form > a:hover {
     color: white;
 }
 
-section,
-table {
+section {
     width: 100%;
 }
 
@@ -127,9 +126,9 @@ table {
     margin: 0.5rem;
 }
 
-tr {
-    justify-content: space-around;
-}
+th, td {
+    border: 1px solid;
+  }
 
 footer {
     position: fixed;
