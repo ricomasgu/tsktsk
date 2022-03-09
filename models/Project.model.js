@@ -8,7 +8,8 @@ const projectSchema = new Schema(
         required: true
     },
     description: { 
-        type: String
+        type: String,
+        default: ""
     },
     status: { 
         type: String,
@@ -30,7 +31,8 @@ const projectSchema = new Schema(
         }]
     },
     time: {
-        type: Number
+        type: Number,
+        default: 0
     }
   },
   { timestamps: true }
