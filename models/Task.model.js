@@ -30,11 +30,9 @@ const taskSchema = new Schema(
     resources: { 
         type: [{ type: Schema.Types.ObjectId, ref: 'Resources' }]
     },
-    timers: { 
-      type: [{
-        resource: { type: Schema.Types.ObjectId, ref: 'Subtask' },
-        timer: { type: Schema.Types.ObjectId, ref: 'Timer' }
-      }]
+    time: { 
+      type: Number,
+      default: 0
     }
   },
   { timestamps: true }

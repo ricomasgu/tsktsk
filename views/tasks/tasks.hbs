@@ -1,4 +1,32 @@
 <!-- SECTION TASKS -->
 <section id="tasks">
-    <h3>You're in tasks</h3>
+
+    <form action="/tasks/create" method="post">
+        <input type="text" placeholder="Add new task" name="name">
+        <input type="submit" value="Add">
+    </form>
+
+    <!-- SECTION TASKS - TASKS -->
+    <section id="task-section">
+        <table id="task-table">
+            <thead>
+                <tr>
+                    <th>Task Name</th>
+                    <th>Status</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each tasks}}
+                {{#with this}}
+                    <tr id="task{{_id}}">
+                        <td><a href="/tasks/{{_id}}/edit">{{name}}</a></td>
+                        <td>{{status}}</td>
+                        <td>{{time}}</td>
+                    </tr>
+                {{/with}}
+                {{/each}}
+            </tbody>
+        </table>
+    </section>
 </section>
