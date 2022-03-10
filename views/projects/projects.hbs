@@ -10,33 +10,20 @@
     <section id="project-section">
         <table id="projects-table">
             <thead >
-                <tr class="row">
+                <tr>
                     <th>Project Name</th>
-                    <th>Details</th>
                     <th>Status</th>
-                    <th>Resources</th>
-                    <th>Tasks</th>
+                    <th>Time</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each projects}}
                 {{#with this}}
-                <tr class="clickable-row row" id="project1">
-                    <td><a href="/projects/{{_id}}/edit">{{name}}</a></td>
-                    <td>{{details}}</td>
-                    <td>{{status}}</td>
-                    <td>
-                        {{#each resources}}
-                        {{#with this}}
-                        <ul>
-                            <li>{{name}}</li>
-                            <li>{{time}}</li>
-                        </ul>
-                        {{/with}}
-                        {{/each}}
-                    </td>
-                    <td>{{tasks.length}}</td>
-                </tr>
+                    <tr id="project1">
+                        <td><a href="/projects/{{_id}}/edit">{{name}}</a></td>
+                        <td>{{status}}</td>
+                        <td>{{time}}</td>
+                    </tr>
                 {{/with}}
                 {{/each}}
             </tbody>
