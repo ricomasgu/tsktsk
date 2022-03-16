@@ -1,12 +1,13 @@
 class HandlerAPI {
     constructor(){
         this.api = axios.create({
-            baseURL: `http://localhost:${process.env.PORT}`
+            baseURL: `http://localhost:4000`
         });
     }
 
     createTask() {
-        return this.api.post("/tasks/create");
+        const [ name ] = arguments;
+        return this.api.post("/tasks/create", { name });
     }
 
     getTask() {

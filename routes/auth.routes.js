@@ -29,7 +29,6 @@ router.post('/signup', isLoggedOut, async (req, res, next) => {
     hash = bcrypt.hashSync(password, salt);   
     try {
         const resDB = await User.create({ email , password: hash });
-        console.log(resDB);
         req.session.currentUser = resDB;
         res.redirect('/userProfile');
     } catch (err) {
@@ -64,7 +63,6 @@ router.post("/signin", isLoggedOut, async (req, res, next) => {
             res.render('auth/login', { errorMessage: 'Email is not registered. Try with other email.' });
             return;
         } else if(bcrypt.compareSync(password, resDB.password)) {
-            console.log(resDB);
             req.session.currentUser = resDB;
             res.redirect("/userProfile");
         } else {
@@ -78,7 +76,6 @@ router.post("/signin", isLoggedOut, async (req, res, next) => {
 
 router.get('/userProfile', isLoggedIn, (req, res, next) => {
     const user = req.session.currentUser;
-    console.log("User Profile:", user);
     res.render('users/user-profile', { user });
 });
 
